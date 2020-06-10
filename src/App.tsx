@@ -1,30 +1,33 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, { useState } from "react";
+import { useQuery } from "@apollo/react-hooks";
+import { gql } from "apollo-boost";
 import "./App.css";
 
-// leaving public for demonstration purposes
-const accessToken: string =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWUwZmNjYzNmNDU0ZTAwMTI4MmMwYjAiLCJzYWx0X2hhc2giOiI2MzM1YTVlOWViOGMxMWIzYjhmMWUzNTBlOTliMDBlNCIsInJvbGVzIjoidXNlciIsInBhcnRuZXJfaWRzIjpbXSwib3RwIjpmYWxzZSwiZXhwIjoxNTk2OTg3MDg1LCJpYXQiOjE1OTE4MDMwODUsImF1ZCI6IjVkNDA5OTZlNmU2MDQ5MDAwNzQ5MGZhMiIsImlzcyI6IkdyYXZpdHkiLCJqdGkiOiI1ZWUwZmNjZDc5YTIxZTAwMTFhOTFiZjgifQ.FXBcdKAG3PUyldvDHgdi3mO98RWxyNChh6_lB8120p0";
-
-const userId: string = "5ee0fccc3f454e001282c0b0";
-
 function App() {
+  const [page, setPage] = useState(1);
+
+  const ARTISTS = gql`
+    {
+      artists(page: ${page}) {
+        name
+      }
+    }
+  `;
+
+  const { loading, error, data } = useQuery(ARTISTS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Something went wrong...</p>;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      {data.artists.map((artist: { name: string }, i: number) => (
+        <div key={i}>
+          <p>{artist.name}</p>
+        </div>
+      ))}
+      <button onClick={() => setPage(page - 1)}>prev</button>
+      <button onClick={() => setPage(page + 1)}>next</button>
     </div>
   );
 }
