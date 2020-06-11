@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./components/Navbar";
+import Layout from "./components/Layout";
 import Content from "./components/Content";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
@@ -8,8 +8,7 @@ const App: React.FC = () => {
   return (
     <div className="app">
       <Router>
-        <Navbar />
-        <Content />
+        <Layout />
       </Router>
     </div>
   );
