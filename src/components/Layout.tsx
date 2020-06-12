@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import clsx from "clsx";
-import { Link } from "react-router-dom";
 import {
   makeStyles,
   useTheme,
@@ -14,14 +13,15 @@ import {
   Toolbar,
   Typography,
   Drawer,
-  List,
-  ListItem,
   Divider,
+  Grid,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import Navbar from "./Navbar";
 import Content from "./Content";
+import Search from "./Search";
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -117,6 +117,7 @@ const Layout: React.FC = () => {
           <Typography variant="h6" noWrap>
             Artsy
           </Typography>
+          <Search />
         </Toolbar>
       </AppBar>
       <Drawer

@@ -94,6 +94,7 @@ const Artist: React.FC = () => {
     variables: { id, page },
   });
 
+  if (id === "404") return <div>Artist not found...</div>;
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Something went wrong...</div>;
 
