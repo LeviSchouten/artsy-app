@@ -15,7 +15,9 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  CircularProgress,
 } from "@material-ui/core";
+import Loading from "./Loading";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -95,7 +97,7 @@ const Artist: React.FC = () => {
   });
 
   if (id === "404") return <div>Artist not found...</div>;
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
   if (error) return <div>Something went wrong...</div>;
 
   const artist: Artist = data.artist;

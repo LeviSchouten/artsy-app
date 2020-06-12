@@ -89,6 +89,7 @@ const Search: React.FC = () => {
       })
       .catch(() => {
         history.push("/artists/404");
+        setSearch("");
       });
   };
 
