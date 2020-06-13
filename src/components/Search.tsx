@@ -84,11 +84,11 @@ const Search: React.FC = () => {
         variables: { slugs },
       })
       .then(({ data }) => {
-        history.push("/artists/" + data.artists[0]._id);
+        history.push("/artist/" + data.artists[0]._id);
         setSearch("");
       })
       .catch(() => {
-        history.push("/artists/404");
+        history.push("/artist/404");
         setSearch("");
       });
   };

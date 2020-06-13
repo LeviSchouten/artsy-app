@@ -17,7 +17,7 @@ const Content: React.FC = () => {
         <Route exact path="/artists">
           <Artists />
         </Route>
-        <Route path="/artists/:id">
+        <Route path="/artist/:id">
           <Artist />
         </Route>
       </Switch>
