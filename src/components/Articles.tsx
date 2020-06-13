@@ -1,20 +1,43 @@
 import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
+import {
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  TableContainer,
+  Paper,
+} from "@material-ui/core";
+
+const useStyles = makeStyles({
+  table: {
+    minWidth: 650,
+  },
+});
 
 const Articles: React.FC = () => {
-  const [page, setPage] = useState(1);
+  const classes = useStyles();
 
   const ARTICLES = gql`
     {
       articles {
+        id
         title
+        href
         author {
           name
         }
+        published_at
       }
     }
   `;
+
+  const handleRowClick = (href: string) => {
+    window.location.assign("https://www.artsy.net" + href);
+  };
 
   const { loading, error, data } = useQuery(ARTICLES);
 
@@ -22,21 +45,42 @@ const Articles: React.FC = () => {
   if (error) return <p>Something went wrong...</p>;
 
   interface Article {
+    id: string;
     title: string;
     author: { name: string };
+    href: string;
+    published_at: string;
   }
 
+  const articles: Article[] = data.articles;
+
   return (
-    <div className="articles">
-      {data.articles.map((article: Article, i: number) => (
-        <div key={i}>
-          <h3>{article.title}</h3>
-          <p>{article.author.name}</p>
-        </div>
-      ))}
-      <button onClick={() => setPage(page - 1)}>prev</button>
-      <button onClick={() => setPage(page + 1)}>next</button>
-    </div>
+    <TableContainer component={Paper}>
+      <Table className={classes.table} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Articles</TableCell>
+            <TableCell>Author</TableCell>
+            <TableCell>Date</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {articles.map((article: Article) => {
+            return (
+              <TableRow
+                key={article.id}
+                hover
+                onClick={() => handleRowClick(article.href)}
+              >
+                <TableCell>{article.title || "n/a"}</TableCell>
+                <TableCell>{article.author.name || "n/a"}</TableCell>
+                <TableCell>{article.published_at || "n/a"}</TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 
