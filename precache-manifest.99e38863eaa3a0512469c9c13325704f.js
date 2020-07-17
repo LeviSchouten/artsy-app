@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1a866449d94a34f8b7809ed01aa20abe",
+    "revision": "1ecc24d79fb566953e75d1e381de2e64",
     "url": "/artsy-app/index.html"
   },
   {
