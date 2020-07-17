@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ab8150e4a43de3c3ae21e82d25cbdd8b",
+    "revision": "1a866449d94a34f8b7809ed01aa20abe",
     "url": "/artsy-app/index.html"
   },
   {
-    "revision": "910e46be17ce80705bf1",
+    "revision": "a0e4d9fcb76bf22b8cc3",
     "url": "/artsy-app/static/css/main.5f361e03.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/artsy-app/static/js/2.eac7a1d7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "910e46be17ce80705bf1",
-    "url": "/artsy-app/static/js/main.a4f3ac1d.chunk.js"
+    "revision": "a0e4d9fcb76bf22b8cc3",
+    "url": "/artsy-app/static/js/main.73d4781a.chunk.js"
   },
   {
     "revision": "b085b24ae1537c58fa96",
