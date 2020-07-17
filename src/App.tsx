@@ -7,7 +7,7 @@ import './App.css';
 const App: React.FC = () => {
   return (
     <div className="app">
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router>
         <Layout />
       </Router>
     </div>
