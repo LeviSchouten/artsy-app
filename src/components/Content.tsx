@@ -8,16 +8,16 @@ const Content: React.FC = () => {
   return (
     <div className="Content">
       <Switch>
-        <Route exact path={process.env.PUBLIC_URL + '/'}>
+        <Route exact path="/">
           Home
         </Route>
-        <Route exact path={process.env.PUBLIC_URL + '/' + '/articles'}>
+        <Route exact path="/articles">
           <Articles />
         </Route>
-        <Route exact path={process.env.PUBLIC_URL + '/' + '/artists'}>
+        <Route exact path="/artists">
           <Artists />
         </Route>
-        <Route path={process.env.PUBLIC_URL + '/' + '/artist/:id'}>
+        <Route path="/artist/:id">
           <Artist />
         </Route>
       </Switch>
