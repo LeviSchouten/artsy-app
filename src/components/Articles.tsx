@@ -11,6 +11,7 @@ import {
   TableContainer,
   Paper,
 } from "@material-ui/core";
+import Loading from "./Loading";
 
 const useStyles = makeStyles({
   table: {
@@ -41,7 +42,7 @@ const Articles: React.FC = () => {
 
   const { loading, error, data } = useQuery(ARTICLES);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>Something went wrong...</p>;
 
   interface Article {

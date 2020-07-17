@@ -15,7 +15,6 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  CircularProgress,
 } from "@material-ui/core";
 import Loading from "./Loading";
 

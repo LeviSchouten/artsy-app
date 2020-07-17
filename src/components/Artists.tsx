@@ -16,6 +16,7 @@ import {
 } from "@material-ui/core";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
+import Loading from "./Loading";
 
 const ARTISTS = gql`
   query artists($page: Int!) {
@@ -46,7 +47,7 @@ const Artists: React.FC = () => {
   });
 
   const handleRowClick = (id: string) => {
-    history.push("/artists/" + id);
+    history.push("/artist/" + id);
   };
 
   interface Artist {
@@ -58,7 +59,7 @@ const Artists: React.FC = () => {
     nationality: string;
   }
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>Something went wrong...</p>;
 
   const artists: Artist[] = data.artists;
